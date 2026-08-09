@@ -1,0 +1,127 @@
+/* ---- one file controls the whole site ---- */
+
+:root {
+  --bg:      #fdfdfb;
+  --text:    #111;
+  --muted:   #8a8a84;
+  --link:    #0645ad;
+  --rule:    #e6e4dd;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg:    #16161a;
+    --text:  #d9d9d3;
+    --muted: #7c7c78;
+    --link:  #7fb2ff;
+    --rule:  #2a2a30;
+  }
+}
+
+* { box-sizing: border-box; }
+
+body {
+  max-width: 34em;
+  margin: 7em auto 9em;
+  padding: 0 1.4em;
+  font: 17px/1.65 Georgia, "Iowan Old Style", Charter, serif;
+  color: var(--text);
+  background: var(--bg);
+  -webkit-text-size-adjust: 100%;
+}
+
+a {
+  color: var(--link);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+}
+a:hover { border-bottom-color: currentColor; }
+a:focus-visible {
+  outline: 2px solid var(--link);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* ---- homepage header ---- */
+
+.name {
+  font-size: 1.5em;
+  font-weight: normal;
+  letter-spacing: -0.01em;
+  margin: 0 0 0.5em;
+}
+
+.bio {
+  margin: 0 0 3.5em;
+  color: var(--muted);
+  font-size: 0.95em;
+  max-width: 30em;
+}
+
+/* ---- essay index ---- */
+
+.index {
+  list-style: none;
+  margin: 0 0 4em;
+  padding: 0;
+}
+
+.index li {
+  display: flex;
+  align-items: baseline;
+  gap: 1.1em;
+  padding: 0.55em 0;
+  border-bottom: 1px solid var(--rule);
+}
+
+.index li:first-child { border-top: 1px solid var(--rule); }
+
+.index time {
+  flex: 0 0 5.2em;
+  font: 400 12px/1 ui-monospace, "SF Mono", Menlo, monospace;
+  color: var(--muted);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+/* ---- footer ---- */
+
+.footer {
+  font-size: 0.85em;
+  color: var(--muted);
+}
+.footer a { color: var(--muted); }
+
+/* ---- essay pages ---- */
+
+h1 {
+  font-size: 1.4em;
+  font-weight: normal;
+  margin: 0 0 0.25em;
+}
+
+.date {
+  color: var(--muted);
+  font-size: 0.85em;
+  margin-bottom: 2.8em;
+}
+
+p { margin: 0 0 1.4em; }
+
+blockquote {
+  margin: 1.8em 0;
+  padding-left: 1.2em;
+  border-left: 2px solid var(--rule);
+  color: var(--muted);
+}
+
+.back {
+  margin-top: 3.5em;
+  font-size: 0.9em;
+}
+
+@media (max-width: 480px) {
+  body { margin: 4em auto 6em; font-size: 16px; }
+  .index li { flex-direction: column; gap: 0.25em; }
+  .index time { flex: none; }
+}
