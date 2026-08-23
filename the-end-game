@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Books That Changed My Life</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h1>The End Game</h1>
+<div class="date">August 2026</div>
+
+<p>One thing I have noticed is that the "slippery slope fallacy" is not always a fallacy. </p>
+
+<p>Sincerely yours, Dolomiti<p>
+  
+<p class="back"><a href="/">&larr; Index</a></p>
+
+</body>
+</html>
