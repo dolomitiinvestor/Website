@@ -30,6 +30,10 @@ body {
   -webkit-text-size-adjust: 100%;
 }
 
+body.home {
+  max-width: 50em;
+}
+
 a {
   color: var(--link);
   text-decoration: none;
@@ -82,6 +86,50 @@ a:focus-visible {
   color: var(--muted);
   letter-spacing: 0.06em;
   text-transform: uppercase;
+}
+
+/* ---- homepage columns ---- */
+
+.columns {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 3em;
+  margin-bottom: 4em;
+}
+
+.col-title {
+  font: 600 12px/1 ui-monospace, "SF Mono", Menlo, monospace;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 2em 0 0.9em;
+}
+.col-title:first-child { margin-top: 0; }
+
+.index.plain li { padding: 0.55em 0; }
+
+.index .tag {
+  margin-left: 0.5em;
+  font-size: 0.75em;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.placeholder {
+  color: var(--muted);
+  font-style: italic;
+  font-size: 0.9em;
+  margin: 0 0 1.6em;
+}
+
+.col-more {
+  font-size: 0.85em;
+  margin: 0.8em 0 0;
+}
+
+@media (max-width: 700px) {
+  .columns { grid-template-columns: 1fr; gap: 2.5em; }
 }
 
 /* ---- footer ---- */
