@@ -173,3 +173,34 @@ blockquote {
   .index li { flex-direction: column; gap: 0.25em; }
   .index time { flex: none; }
 }
+
+/* ---- project boxes ---- */
+
+.boxes {
+  display: grid;
+  gap: 1em;
+  margin: 0 0 2.5em;
+}
+
+.box {
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  padding: 1em 1.1em 0.4em;
+}
+
+.box-title {
+  font: 600 12px/1 ui-monospace, "SF Mono", Menlo, monospace;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text);
+  margin: 0 0 0.8em;
+}
+
+.box-sub {
+  color: var(--muted);
+  font-size: 0.85em;
+  margin: -0.4em 0 0.6em;
+}
+
+.box .index { margin-bottom: 0.6em; }
+.box .placeholder { margin-bottom: 0.6em; }
