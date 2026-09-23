@@ -214,3 +214,13 @@ blockquote {
   color: var(--muted);
   margin-top: 2em;
 }
+
+/* ---- page hero image ---- */
+
+.hero {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+  margin: 0 0 2em;
+}
