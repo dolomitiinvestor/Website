@@ -204,3 +204,13 @@ blockquote {
 
 .box .index { margin-bottom: 0.6em; }
 .box .placeholder { margin-bottom: 0.6em; }
+
+/* ---- view counter ---- */
+
+.views {
+  font: 400 12px/1 ui-monospace, "SF Mono", Menlo, monospace;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-top: 2em;
+}

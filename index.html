@@ -86,6 +86,21 @@
   <a href="ai-writing-policy.html" style="color: lightblue;">AI writing policy</a>
 </p>
 
+<p class="views" id="views" hidden></p>
+
+<script>
+  // View counter: Abacus (free, no account). Hidden if the service is down.
+  fetch('https://abacus.jasoncameron.dev/hit/dolomitiinvestor/homepage')
+    .then(function (r) { return r.json(); })
+    .then(function (d) {
+      if (typeof d.value !== 'number') return;
+      var el = document.getElementById('views');
+      el.textContent = d.value.toLocaleString() + ' views';
+      el.hidden = false;
+    })
+    .catch(function () {});
+</script>
+
 <script src='https://storage.ko-fi.com/cdn/scripts/overlay-widget.js'></script>
 <script>
   kofiWidgetOverlay.draw('dolomitiinvestor', {
