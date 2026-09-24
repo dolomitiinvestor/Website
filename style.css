@@ -274,3 +274,6 @@ blockquote {
   font-size: 0.95em;
 }
 .book-review p:last-child { margin-bottom: 0; }
+
+.box-title a { color: inherit; text-decoration: none; }
+.box-title a:hover { text-decoration: underline; }
