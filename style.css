@@ -204,6 +204,7 @@ blockquote {
 
 .box .index { margin-bottom: 0.6em; }
 .box .placeholder { margin-bottom: 0.6em; }
+.box-link { font-size: 0.9em; margin: 0 0 1em; }
 
 /* ---- view counter ---- */
 
