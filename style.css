@@ -292,21 +292,35 @@ blockquote {
 
 /* ---- art page ---- */
 
+body.art { max-width: 56em; }
+
 .art-feature {
   display: flex;
-  gap: 1.5em;
+  gap: 2em;
   align-items: flex-start;
   margin: 0 0 2.5em;
 }
 .art-feature img {
-  flex: 0 0 55%;
-  width: 55%;
+  flex: 0 0 48%;
+  width: 48%;
   height: auto;
   border-radius: 4px;
+  position: sticky;
+  top: 1.5em;
 }
-.art-text { flex: 1; }
+.art-text {
+  flex: 1;
+  font-size: 0.88em;
+  line-height: 1.6;
+}
+.art-text p { margin-bottom: 1em; }
+.art-source {
+  color: var(--muted);
+  font-style: italic;
+  margin-top: 1.6em;
+}
 
-@media (max-width: 600px) {
+@media (max-width: 700px) {
   .art-feature { flex-direction: column; }
-  .art-feature img { width: 100%; flex-basis: auto; }
+  .art-feature img { width: 100%; flex-basis: auto; position: static; }
 }
