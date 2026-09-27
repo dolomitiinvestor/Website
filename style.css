@@ -292,29 +292,32 @@ blockquote {
 
 /* ---- art page ---- */
 
-body.art { max-width: 56em; }
+body.art { max-width: 64em; }
 
+/* Sizes use cqi (1% of the row width) so the quote box always ends
+   flush with the bottom of the square image. */
 .art-feature {
-  display: flex;
-  gap: 2em;
-  align-items: flex-start;
+  container-type: inline-size;
+  display: grid;
+  grid-template-columns: 50% 1fr;
+  gap: 3cqi;
+  align-items: stretch;
   margin: 0 0 2.5em;
 }
 .art-feature img {
-  flex: 0 0 48%;
-  width: 48%;
+  width: 100%;
   height: auto;
   border-radius: 4px;
-  position: sticky;
-  top: 1.5em;
+  align-self: start;
 }
 .art-text {
   --accent: #c8401c;
   position: relative;
-  flex: 1;
-  font-size: 0.88em;
-  line-height: 1.6;
-  padding: 1.8em 1.6em 1.4em;
+  display: flex;
+  flex-direction: column;
+  font-size: 1.3cqi;
+  line-height: 1.5;
+  padding: 3.4cqi 2.6cqi 2.2cqi;
   background: color-mix(in srgb, var(--accent) 7%, var(--bg));
   border-left: 4px solid var(--accent);
   border-radius: 0 4px 4px 0;
@@ -330,23 +333,25 @@ body.art { max-width: 56em; }
   color: var(--accent);
   opacity: 0.35;
 }
-.art-text p { margin-bottom: 1em; }
+.art-text p { margin: 0 0 0.9em; }
 .art-text p:first-child {
-  font-size: 1.15em;
+  font-size: 1.12em;
   font-style: italic;
 }
 .art-source {
   color: var(--muted);
   font-style: italic;
-  margin: 1.6em 0 0;
-  padding-top: 1em;
+  margin: auto 0 0 !important;
+  padding-top: 0.9em;
   border-top: 1px solid color-mix(in srgb, var(--accent) 30%, transparent);
 }
 @media (prefers-color-scheme: dark) {
   .art-text { --accent: #e8744f; box-shadow: none; }
 }
 
-@media (max-width: 700px) {
-  .art-feature { flex-direction: column; }
-  .art-feature img { width: 100%; flex-basis: auto; position: static; }
+@media (max-width: 900px) {
+  .art-feature { display: block; }
+  .art-feature img { margin-bottom: 1.5em; }
+  .art-text { font-size: 0.9em; padding: 1.8em 1.4em 1.4em; }
+  .art-source { margin-top: 1.4em !important; }
 }
