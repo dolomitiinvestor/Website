@@ -289,3 +289,24 @@ blockquote {
 .box-title a:hover { text-decoration: underline; }
 .book-review .app-desc { margin: 0 0 0.3em; }
 .app-links { font-size: 0.9em; margin: 0 0 0.8em; }
+
+/* ---- art page ---- */
+
+.art-feature {
+  display: flex;
+  gap: 1.5em;
+  align-items: flex-start;
+  margin: 0 0 2.5em;
+}
+.art-feature img {
+  flex: 0 0 55%;
+  width: 55%;
+  height: auto;
+  border-radius: 4px;
+}
+.art-text { flex: 1; }
+
+@media (max-width: 600px) {
+  .art-feature { flex-direction: column; }
+  .art-feature img { width: 100%; flex-basis: auto; }
+}
