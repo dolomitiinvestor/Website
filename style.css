@@ -309,25 +309,11 @@ body.art { max-width: 56em; }
   top: 1.5em;
 }
 .art-text {
-  --glow: rgba(214, 160, 70, 0.28);
-  --glow-bg: #fffaf0;
   flex: 1;
   font-size: 0.88em;
   line-height: 1.6;
-  /* padding offset by equal negative margin keeps the original text width */
-  padding: 1.2em;
-  margin: -1.2em;
-  background: var(--glow-bg);
-  border-radius: 6px;
-  box-shadow: inset 3px 0 0 #c9963f, 0 0 40px 6px var(--glow), 0 0 0 1px rgba(201, 150, 63, 0.18);
 }
-@media (prefers-color-scheme: dark) {
-  .art-text {
-    --glow: rgba(230, 175, 80, 0.22);
-    --glow-bg: #221f1a;
-  }
-}
-.art-text p { margin: 0 0 1em; }
+.art-text p { margin-bottom: 1em; }
 .art-source {
   color: var(--muted);
   font-style: italic;
