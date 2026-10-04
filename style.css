@@ -314,11 +314,12 @@ body.art { max-width: 56em; }
   flex: 1;
   font-size: 0.88em;
   line-height: 1.6;
-  padding: 1.4em 1.6em 0.4em;
+  /* padding offset by equal negative margin keeps the original text width */
+  padding: 1.2em;
+  margin: -1.2em;
   background: var(--glow-bg);
-  border-left: 3px solid #c9963f;
   border-radius: 6px;
-  box-shadow: 0 0 40px 6px var(--glow), 0 0 0 1px rgba(201, 150, 63, 0.18);
+  box-shadow: inset 3px 0 0 #c9963f, 0 0 40px 6px var(--glow), 0 0 0 1px rgba(201, 150, 63, 0.18);
 }
 @media (prefers-color-scheme: dark) {
   .art-text {
