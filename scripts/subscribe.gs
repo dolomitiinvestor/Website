@@ -1,6 +1,11 @@
 // Google Apps Script for the "Get Connected" form on the homepage.
 // Stores emails in the Google Sheet this script is attached to.
-// Setup steps are in the "Get Connected" section comment in index.html.
+//
+// Setup:
+// 1. Create a Google Sheet. Extensions > Apps Script. Paste this file in. Save.
+// 2. Deploy > New deployment > type "Web app".
+//    Execute as: Me. Who has access: Anyone. Deploy and approve access.
+// 3. Copy the Web App URL into SUBSCRIBE_URL in index.html.
 
 var SHEET_NAME = 'Subscribers';
 
