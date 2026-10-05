@@ -93,6 +93,11 @@
   // Paste the Web App URL from that script's deployment here.
   var SUBSCRIBE_URL = 'PASTE_APPS_SCRIPT_WEB_APP_URL_HERE';
 
+  // Hide the section until the URL is set, so visitors aren't told they signed up when nothing is saved.
+  if (SUBSCRIBE_URL.indexOf('https://script.google.com/') !== 0) {
+    document.querySelector('.connect').hidden = true;
+  }
+
   document.getElementById('connect-form').addEventListener('submit', function (e) {
     e.preventDefault();
     var form = e.target;
