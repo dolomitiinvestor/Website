@@ -324,3 +324,69 @@ body.art { max-width: 56em; }
   .art-feature { flex-direction: column; }
   .art-feature img { width: 100%; flex-basis: auto; position: static; }
 }
+
+/* ---- get connected (email signup) ---- */
+
+.connect {
+  border-top: 1px solid var(--rule);
+  padding-top: 2em;
+  margin: 0 0 3em;
+  max-width: 30em;
+}
+
+.connect-text {
+  color: var(--muted);
+  font-size: 0.95em;
+  margin: 0 0 1em;
+}
+
+.connect-form {
+  display: flex;
+  gap: 0.6em;
+}
+
+.connect-form input {
+  flex: 1;
+  min-width: 0;
+  padding: 0.5em 0.7em;
+  font: inherit;
+  font-size: 0.95em;
+  color: var(--text);
+  background: var(--bg);
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+}
+.connect-form input:focus {
+  outline: 2px solid var(--link);
+  outline-offset: 1px;
+}
+
+.connect-form button {
+  padding: 0.5em 1.1em;
+  font: 600 12px/1 ui-monospace, "SF Mono", Menlo, monospace;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--bg);
+  background: var(--muted);
+  border: 0;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.connect-form button:hover { background: var(--text); }
+.connect-form button:focus-visible {
+  outline: 2px solid var(--link);
+  outline-offset: 2px;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+@media (max-width: 480px) {
+  .connect-form { flex-direction: column; }
+}
