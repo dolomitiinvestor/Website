@@ -390,3 +390,10 @@ body.art { max-width: 56em; }
 @media (max-width: 480px) {
   .connect-form { flex-direction: column; }
 }
+
+.connect-msg {
+  color: var(--muted);
+  font-size: 0.95em;
+  margin: 0.8em 0 0;
+}
+.connect-form button:disabled { opacity: 0.6; cursor: default; }
