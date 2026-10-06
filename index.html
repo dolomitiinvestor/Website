@@ -76,6 +76,48 @@
 
 </div>
 
+<section class="connect">
+  <h2 class="col-title">Get Connected</h2>
+  <p class="connect-text">Get an email whenever something new is published. No spam, unsubscribe anytime.</p>
+  <form class="connect-form" id="connect-form">
+    <label for="connect-email" class="visually-hidden">Email address</label>
+    <input type="email" name="email" id="connect-email" placeholder="you@example.com" required>
+    <input type="text" name="website" class="visually-hidden" tabindex="-1" autocomplete="off" aria-hidden="true">
+    <button type="submit">Subscribe</button>
+  </form>
+  <p class="connect-msg" id="connect-msg" role="status" hidden></p>
+</section>
+
+<script>
+  // Emails are saved to a Google Sheet via the Apps Script in scripts/subscribe.gs.
+  // Paste the Web App URL from that script's deployment here.
+  var SUBSCRIBE_URL = 'PASTE_APPS_SCRIPT_WEB_APP_URL_HERE';
+
+  // Hide the section until the URL is set, so visitors aren't told they signed up when nothing is saved.
+  if (SUBSCRIBE_URL.indexOf('https://script.google.com/') !== 0) {
+    document.querySelector('.connect').hidden = true;
+  }
+
+  document.getElementById('connect-form').addEventListener('submit', function (e) {
+    e.preventDefault();
+    var form = e.target;
+    var msg = document.getElementById('connect-msg');
+    var button = form.querySelector('button');
+    button.disabled = true;
+    // no-cors: Apps Script doesn't send CORS headers, so the reply can't be read.
+    fetch(SUBSCRIBE_URL, { method: 'POST', mode: 'no-cors', body: new URLSearchParams(new FormData(form)) })
+      .then(function () {
+        form.hidden = true;
+        msg.textContent = "Thanks, you're on the list.";
+      })
+      .catch(function () {
+        button.disabled = false;
+        msg.textContent = 'Something went wrong. Please try again.';
+      })
+      .finally(function () { msg.hidden = false; });
+  });
+</script>
+
 <p class="footer">
   Curiositas ad approximationem veritatis ducit <br> <br>
   <a href="ai-writing-policy.html" style="color: lightblue;">AI writing policy</a>
