@@ -397,3 +397,13 @@ body.art { max-width: 56em; }
   margin: 0.8em 0 0;
 }
 .connect-form button:disabled { opacity: 0.6; cursor: default; }
+
+/* ---- guide pages (mba.html) ---- */
+
+#guide h3 {
+  font-size: 1.05em;
+  font-weight: 600;
+  margin: 1.8em 0 0.4em;
+}
+#guide .col-title { margin-top: 3em; }
+#guide .col-title:first-child { margin-top: 0; }

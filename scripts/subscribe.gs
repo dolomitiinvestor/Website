@@ -7,13 +7,22 @@
 //    Execute as: Me. Who has access: Anyone. Deploy and approve access.
 // 3. Copy the Web App URL into SUBSCRIBE_URL in index.html.
 
+// After editing this file, redeploy: Deploy > Manage deployments > Edit > Version: New version.
+// (Keeps the same Web App URL.)
+
 var SHEET_NAME = 'Subscribers';
 
-function getSheet_() {
+// Which tab each form writes to. The form sends a hidden "list" field.
+var LISTS = {
+  mba: 'MBA Guide' // mba.html
+};
+
+function getSheet_(name) {
   var ss = SpreadsheetApp.getActiveSpreadsheet();
-  var sheet = ss.getSheetByName(SHEET_NAME);
+  name = name || SHEET_NAME;
+  var sheet = ss.getSheetByName(name);
   if (!sheet) {
-    sheet = ss.insertSheet(SHEET_NAME);
+    sheet = ss.insertSheet(name);
     sheet.appendRow(['email', 'subscribed_at']);
   }
   return sheet;
@@ -21,6 +30,8 @@ function getSheet_() {
 
 // Receives the form POST from the website.
 function doPost(e) {
+  var list = String((e.parameter && e.parameter.list) || '');
+  var sheetName = LISTS.hasOwnProperty(list) ? LISTS[list] : SHEET_NAME;
   var email = String((e.parameter && e.parameter.email) || '').trim().toLowerCase();
   var trap = (e.parameter && e.parameter.website) || ''; // honeypot: bots fill it, people don't
 
@@ -31,7 +42,7 @@ function doPost(e) {
   var lock = LockService.getScriptLock();
   lock.waitLock(10000);
   try {
-    var sheet = getSheet_();
+    var sheet = getSheet_(sheetName);
     var existing = sheet.getRange(1, 1, sheet.getLastRow(), 1).getValues()
       .map(function (r) { return String(r[0]).toLowerCase(); });
     if (existing.indexOf(email) === -1) {
