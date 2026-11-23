@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MBA Application &amp; GMAT Guide</title>
+<meta name="description" content="Free MBA application advice and a GMAT study guide.">
+<link rel="stylesheet" href="style.css">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+</head>
+<body>
+
+<h1>MBA Application &amp; GMAT Guide</h1>
+<div class="date">Free. Just leave an email.</div>
+
+<!-- TODO: write your intro: who this is for and why you're qualified to give it. -->
+<p>[Intro goes here.]</p>
+
+<section class="connect" id="gate">
+  <h2 class="col-title">Get the guide</h2>
+  <p class="connect-text">Enter your email to unlock the application advice and the GMAT study guide. No spam.</p>
+  <form class="connect-form" id="gate-form">
+    <label for="gate-email" class="visually-hidden">Email address</label>
+    <input type="email" name="email" id="gate-email" placeholder="you@example.com" required>
+    <input type="text" name="website" class="visually-hidden" tabindex="-1" autocomplete="off" aria-hidden="true">
+    <input type="hidden" name="list" value="mba">
+    <button type="submit">Unlock</button>
+  </form>
+  <p class="connect-msg" id="gate-msg" role="status" hidden></p>
+</section>
+
+<div id="guide" hidden>
+
+  <h2 class="col-title">MBA application advice</h2>
+  <!-- TODO: write these. Rename, cut, or add headings as you like. -->
+  <h3>Picking schools</h3>
+  <p>[...]</p>
+  <h3>Essays</h3>
+  <p>[...]</p>
+  <h3>Recommendations</h3>
+  <p>[...]</p>
+  <h3>Resume</h3>
+  <p>[...]</p>
+  <h3>Interviews</h3>
+  <p>[...]</p>
+  <h3>Timeline and rounds</h3>
+  <p>[...]</p>
+
+  <h2 class="col-title">GMAT study guide</h2>
+  <!-- TODO: write these. -->
+  <h3>Diagnostic and target score</h3>
+  <p>[...]</p>
+  <h3>Materials</h3>
+  <p>[...]</p>
+  <h3>Study schedule</h3>
+  <p>[...]</p>
+  <h3>Quant</h3>
+  <p>[...]</p>
+  <h3>Verbal</h3>
+  <p>[...]</p>
+  <h3>Data Insights</h3>
+  <p>[...]</p>
+  <h3>Test day</h3>
+  <p>[...]</p>
+
+</div>
+
+<script>
+  // Emails go to the same Google Sheet as the homepage signup (scripts/subscribe.gs),
+  // into a separate "MBA Guide" tab. Use the same Web App URL as SUBSCRIBE_URL in index.html.
+  var SUBSCRIBE_URL = 'PASTE_APPS_SCRIPT_WEB_APP_URL_HERE';
+  var UNLOCK_KEY = 'mba-guide-unlocked';
+
+  var gate = document.getElementById('gate');
+  var guide = document.getElementById('guide');
+
+  function unlock() {
+    gate.hidden = true;
+    guide.hidden = false;
+  }
+
+  var remembered = false;
+  try { remembered = localStorage.getItem(UNLOCK_KEY) === '1'; } catch (e) {}
+
+  // Until the URL is set, show the guide openly rather than collect emails that go nowhere.
+  if (remembered || SUBSCRIBE_URL.indexOf('https://script.google.com/') !== 0) {
+    unlock();
+  }
+
+  document.getElementById('gate-form').addEventListener('submit', function (e) {
+    e.preventDefault();
+    var form = e.target;
+    var msg = document.getElementById('gate-msg');
+    var button = form.querySelector('button');
+    button.disabled = true;
+    // no-cors: Apps Script doesn't send CORS headers, so the reply can't be read.
+    fetch(SUBSCRIBE_URL, { method: 'POST', mode: 'no-cors', body: new URLSearchParams(new FormData(form)) })
+      .then(function () {
+        try { localStorage.setItem(UNLOCK_KEY, '1'); } catch (e) {}
+        unlock();
+      })
+      .catch(function () {
+        button.disabled = false;
+        msg.textContent = 'Something went wrong. Please try again.';
+        msg.hidden = false;
+      });
+  });
+</script>
+
+<p class="back"><a href="/">&larr; Index</a></p>
+
+</body>
+</html>
